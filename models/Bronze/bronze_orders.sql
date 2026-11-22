@@ -8,5 +8,6 @@ select
   PLANT_ID,
   ORDER_DATE, 
   PROMISED_DELIVERY_DATE,
-  ORDERED_QTY 
+  ORDERED_QTY,
+  INGESTION_TS
 from {{source('raw', 'ORDERS')}}

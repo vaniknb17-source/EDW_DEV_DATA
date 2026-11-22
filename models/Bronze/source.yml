@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CRH_POC_DB
+    schema: BRONZE
+    description: "Raw source-shaped tables loaded for CRH POC"
+    tables:
+      - name: ORDERS
+        description: "Raw order data"
+        columns:
+          - name: ORDER_ID
+            description: "Unique order identifier"
+            tests:
+              - not_null
+              - unique
+          - name: PLANT_ID
+            description: "Plant identifier"
+          - name: ORDER_DATE
+            description: "Date order was placed"
+          - name: PROMISED_DELIVERY_DATE
+            description: "Promised delivery date"
+          - name: ORDERED_QTY
+            description: "Ordered quantity"
+
+      - name: DELIVERIES
+        description: "Raw delivery data"
+        columns:
+          - name: DELIVERY_ID
+            description: "Unique delivery identifier"
+            tests:
+              - not_null
+              - unique
+          - name: ORDER_ID
+            description: "Order identifier linked to the delivery"
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'ORDERS')
+                  field: ORDER_ID
+          - name: ACTUAL_DELIVERY_DATE
+            description: "Actual date delivered"
+          - name: DELIVERED_QTY
+            description: "Delivered quantity"

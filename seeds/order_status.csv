@@ -1,0 +1,5 @@
+STATUS_CODE,STATUS_DESC
+P,Pending
+S,Shipped
+D,Delivered
+C,Cancelled

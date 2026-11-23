@@ -42,3 +42,6 @@ sources:
             description: "Actual date delivered"
           - name: DELIVERED_QTY
             description: "Delivered quantity"
+      - name: customer_master
+      - name: customer_master1
+      - name: orders
